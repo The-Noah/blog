@@ -22,9 +22,57 @@ html, body{
 
 body{
   margin: 0;
+  background-color: #F5F5F5;
   color: #666;
   font-family: Montserrat, Arial, sans-serif;
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+h1, h2{
+  margin: 0;
+}
+
+h1{
+  color: #333;
+}
+
+h2{
+  color: #444;
+}
+
+header{
+  margin: 4rem 0;
+}
+
+.cards{
+  width: 80%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  grid-gap: 2rem;
+
+  @include mobile{
+    grid-template-columns: 1fr;
+    grid-gap: 1rem;
+  }
+
+  & > div{
+    padding: 1rem;
+    background-color: #FFF;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 2px 1rem #0001;
+    border-radius: .5rem;
+    cursor: pointer;
+
+    h2{
+      margin-bottom: 1rem;
+    }
+  }
+}
+
+.post{
+  padding: 2rem;
+  display: none;
 }

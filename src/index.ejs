@@ -5,10 +5,24 @@
   <meta name="description" content="A simple blog built with static-site-generator">
   <meta name="author" content="The Noah">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Blog | The Noah</title>
-  <style><%- css.style -%></style>
+  <title>The Noah's Blog</title>
+  <style><%- css.style %></style>
 </head>
 <body>
-  <h1>Hello, World!</h1>
+  <header>
+    <h1>Hello, World!</h1>
+  </header>
+  <div class="cards">
+    <% Object.keys(markdown).forEach((file) => { post = markdown[file]; %>
+      <div onclick="read('<%= file %>')">
+        <h2><%= post.metadata.title %></h2>
+        <small>Published by <%= post.metadata.author %> on <%= new Date(Date.parse(post.metadata.created)).toLocaleDateString() %></small>
+      </div>
+    <% }) %>
+  </div>
+  <% Object.keys(markdown).forEach((file) => { post = markdown[file]; %>
+    <div class="post" id="post-<%= file %>"><%- post.content %></div>
+  <% }) %>
+  <script>var markdown = <%- JSON.stringify(markdown) %>;<%- js.app %></script>
 </body>
 </html>
